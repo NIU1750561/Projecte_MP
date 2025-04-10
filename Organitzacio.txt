@@ -1,0 +1,4 @@
+Classe Tauler, Posició --> Uma
+	--> Mètodes i implementació
+Classe Fitxa, Moviment --> David
+	--> Mètodes i implementació

@@ -2,29 +2,37 @@
 #define FITXA_H
 
 #include <iostream>
-#include <vector>
-#include <string>
 #include "Posicio.h"
 #include "Moviment.h"
 
 using namespace std;
 
-typedef enum {
+const int MAX_MOVIMENTS = 10;
+
+typedef enum 
+{
     TIPUS_NORMAL,
     TIPUS_DAMA,
     TIPUS_EMPTY
+
 } TipusFitxa;
 
-typedef enum {
+typedef enum 
+{
     COLOR_NEGRE,
     COLOR_BLANC
+
 } ColorFitxa;
 
-class Fitxa {
+class Fitxa 
+{
 private:
     TipusFitxa m_tipus;
     ColorFitxa m_color;
-    vector<Moviment> m_movimentsValids;
+
+    Moviment m_movimentsValids[MAX_MOVIMENTS];
+
+    int m_numMoviments;
 
 public:
     // Constructors
@@ -41,12 +49,14 @@ public:
     void setTipus(TipusFitxa tipus);
     void setColor(ColorFitxa color);
 
-    // Metodes per la gestio de moviments
-    void afegeixMovimentValid(const Moviment& moviment);
+    // Gestió moviments
+    void afegeixMovimentValid(const Moviment& mov);
     void netejaMoviments();
-    const vector<Moviment>& getMovimentsValids() const;
+    int getNumMoviments() const;
 
-    // Conversio a dama
+    Moviment getMoviment(int i) const;
+
+    // Conversió a dama
     void convertirEnDama();
 };
 
